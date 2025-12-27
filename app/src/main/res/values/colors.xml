@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <style name="AppTheme" parent="Theme.Material3.Light">
+        <!-- Otros atributos -->
+        <item name="navigationViewStyle">@style/MyNavigationViewStyle</item>
+    </style>
+
+    <style name="MyNavigationViewStyle" parent="Widget.Material3.NavigationView">
+        <item name="itemIconTint">@null</item>
+        <item name="itemTextColor">@color/black</item>
+    </style>
+    <!-- Colores base -->
+    <color name="gray">#FF9E9E9E</color>
+    <color name="dark_gray">#FF616161</color>
+    <color name="light_gray">#FFE0E0E0</color>
+
+    <!-- Colores principales -->
+    <color name="blue">#FF2196F3</color>
+    <color name="light_blue">#FFBBDEFB</color>
+    <color name="green">#FF4CAF50</color>
+    <color name="light_green">#FFC8E6C9</color>
+    <color name="orange">#FFFF9800</color>
+    <color name="light_orange">#FFFFE0B2</color>
+    <color name="purple">#FF9C27B0</color>
+    <color name="light_purple">#FFE1BEE7</color>
+    <color name="red">#FFF44336</color>
+    <color name="teal">#FF009688</color>
+
+    <!-- Colores para cliente -->
+    <color name="primary_client">#FF6A11CB</color>
+    <color name="secondary_client">#FF2575FC</color>
+    <color name="purple_50">#F3E5F5</color>
+    <color name="purple_100">#E1BEE7</color>
+    <color name="purple_200">#CE93D8</color>
+    <color name="purple_500">#9C27B0</color>
+    <color name="purple_700">#7B1FA2</color>
+    <color name="purple_800">#6A1B9A</color>
+</resources>

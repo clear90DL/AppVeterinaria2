@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <!-- Barra de búsqueda -->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:boxStrokeColor="@color/purple_700"
+        app:hintTextColor="@color/purple_700"
+        app:startIconDrawable="@drawable/logo"
+        app:endIconMode="clear_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBuscarMascota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Buscar mascota..."
+            android:inputType="text"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- RecyclerView para mostrar mascotas -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMascotas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="16dp"
+        android:padding="4dp" />
+
+    <!-- Botón flotante para agregar nueva mascota -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAgregarMascota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="24dp"
+        android:src="@drawable/perro"
+        app:backgroundTint="@color/purple_700"
+        app:tint="@android:color/black" />
+
+    <!-- TextView cuando no hay mascotas -->
+    <TextView
+        android:id="@+id/tvNoMascotas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="No tienes mascotas registradas\n\n¡Presiona el botón + para agregar una!"
+        android:textSize="18sp"
+        android:textColor="@android:color/darker_gray"
+        android:gravity="center"
+        android:visibility="gone" />
+
+</LinearLayout>

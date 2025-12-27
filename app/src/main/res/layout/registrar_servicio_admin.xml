@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvTituloServicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Configurar Nuevo Servicio"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#333"
+            android:layout_marginBottom="20dp"/>
+
+        <EditText
+            android:id="@+id/etNombreServicio"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Nombre (Ej: Vacuna Rabia)"
+            android:background="@drawable/bg_edittext"
+            android:paddingHorizontal="15dp"
+            android:layout_marginBottom="12dp"
+            android:inputType="textCapWords"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categoría:"
+            android:layout_marginBottom="5dp"/>
+        <Spinner
+            android:id="@+id/spinnerCategoriaServicio"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/bg_spinner_small"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/etDescripcionServicio"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="Descripción detallada..."
+            android:background="@drawable/bg_edittext"
+            android:padding="15dp"
+            android:gravity="top"
+            android:layout_marginBottom="12dp"
+            android:inputType="textMultiLine"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="5dp">
+                <EditText
+                    android:id="@+id/etCostoServicio"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:hint="Costo ($)"
+                    android:background="@drawable/bg_edittext"
+                    android:paddingHorizontal="15dp"
+                    android:inputType="numberDecimal"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="5dp">
+                <EditText
+                    android:id="@+id/etDuracionServicio"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:hint="Minutos (Ej: 30)"
+                    android:background="@drawable/bg_edittext"
+                    android:paddingHorizontal="15dp"
+                    android:inputType="number"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnGuardarServicio"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="30dp"
+            android:text="PUBLICAR SERVICIO"
+            android:backgroundTint="#2E7D32"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+</ScrollView>

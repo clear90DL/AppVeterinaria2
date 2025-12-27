@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Perfil del Cliente -->
+    <item
+        android:id="@+id/nav_perfil"
+        android:title="👤 Perfil"
+     />
+
+    <!-- Inicio / Dashboard -->
+    <item
+        android:id="@+id/nav_inicio_cliente"
+        android:title="🏠 Inicio"
+ />
+
+    <!-- Registrar Mascota -->
+    <item
+        android:id="@+id/nav_registrar_mascota_cliente"
+        android:title="➕ Registrar Mascota"
+       />
+    <!-- Mis Mascotas -->
+    <item
+        android:id="@+id/nav_mis_mascotas"
+        android:title="🐕 Mis Mascotas" />
+    <!-- Solicitar Cita -->
+    <item
+        android:id="@+id/nav_solicitar_cita_cliente"
+        android:title="📅 Solicitar Cita"
+      />
+
+    <!-- Ver Mis Citas -->
+    <item
+        android:id="@+id/ver_mis_citas_cliente"
+        android:title="👁️ Ver Mis Citas"
+       />
+
+    <!-- Servicios Disponibles -->
+    <item
+        android:id="@+id/ServiciosDisponibles_cliente"
+        android:title="🔧 Servicios Disponibles"
+      />
+    <!-- Cerrar Sesión -->
+    <item
+        android:id="@+id/btnCerrarSesion"
+        android:title="🚪 Cerrar Sesión"
+       />
+
+</menu>

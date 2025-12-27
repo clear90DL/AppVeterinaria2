@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:orientation="vertical"
+    android:background="@drawable/fondo"
+    android:gravity="center"
+    android:padding="16dp">
+    <!-- Logo de la app -->
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/logo"
+        android:contentDescription="Logo VetCat"
+        app:tint="@android:color/white" />
+    <!-- Nombre de la app -->
+    <TextView
+        android:id="@+id/tvAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VetCat"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp" />
+    <!-- Descripción -->
+    <TextView
+        android:id="@+id/tvAppDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tu asistente veterinario"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:layout_marginTop="2dp" />
+
+</LinearLayout>

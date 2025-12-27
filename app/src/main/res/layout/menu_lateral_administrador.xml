@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Perfil del Administrador -->
+    <item
+        android:id="@+id/nav_perfil"
+        android:title="👤 Perfil"
+        />
+
+    <!-- Inicio / Dashboard -->
+    <item
+        android:id="@+id/nav_inicio_administrador"
+        android:title="🏠 Inicio"
+       />
+
+    <!-- Gestión de Usuarios -->
+    <item
+        android:id="@+id/nav_usuarios_administrador"
+        android:title="👥 Usuarios"
+ />
+
+    <!-- Gestión de Mascotas -->
+    <item
+        android:id="@+id/nav_mascota_administrador"
+        android:title="🐕 Mascotas"
+    />
+    <!-- Gestión de Citas -->
+    <item
+        android:id="@+id/nav_cita_administrador"
+        android:title="📅 Citas"
+        />
+
+    <!-- Servicios -->
+    <item
+        android:id="@+id/servicios_administrador"
+        android:title="⚙️ Servicios"
+      />
+
+    <!-- Informes y Reportes -->
+    <item
+        android:id="@+id/informes_administrador"
+        android:title="📊 Informes"
+     />
+
+    <!-- Cambiar Contraseña -->
+    <item
+        android:id="@+id/cambiar_contraseña"
+        android:title="🔐 Cambiar Contraseña"
+       />
+
+    <!-- Cerrar Sesión -->
+    <item
+        android:id="@+id/btnCerrarSesion"
+        android:title="🚪 Cerrar Sesión"
+     />
+</menu>

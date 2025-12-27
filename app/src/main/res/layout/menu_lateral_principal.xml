@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+         <!-- Iniciar Sesión -->
+        <item
+            android:id="@+id/nav_login"
+            android:title="🔑 Iniciar Sesión"/>
+
+        <!-- Registrarse -->
+        <item
+            android:id="@+id/nav_registro"
+            android:title="📝 Registrarse"/>
+
+
+        <!-- Cerrar App (Solo visible si ya hay sesión) -->
+        <item
+            android:id="@+id/nav_cerrar_sesion"
+            android:title="🚪 Cerrar Sesión"
+            android:visible="false"/>
+</menu>
