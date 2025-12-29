@@ -23,20 +23,24 @@
             app:title="Panel Administrador"
             app:titleTextColor="@android:color/white" />
 
-        <!-- Contenedor dinámico para las vistas -->
-        <FrameLayout
-            android:id="@+id/contenedorVistas"
+        <!-- AQUÍ VA EL SWIPE REFRESH LAYOUT -->
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <!-- Vista por defecto (Inicio) -->
-            <include layout="@layout/inicio_administrador" />
-
-        </FrameLayout>
+            <!-- Contenedor dinámico para las vistas -->
+            <FrameLayout
+                android:id="@+id/contenedorVistas"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <!-- El contenido de inicio_administrador.xml se cargará aquí automáticamente -->
+                <include layout="@layout/inicio_administrador" />
+            </FrameLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 
-    <!-- Panel lateral (SIEMPRE presente) -->
+    <!-- Panel lateral -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
         android:layout_width="wrap_content"

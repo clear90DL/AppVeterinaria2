@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <!-- Perfil del Cliente -->
     <item
         android:id="@+id/nav_perfil"
         android:title="👤 Perfil"
-     />
-
+        />
     <!-- Inicio / Dashboard -->
     <item
         android:id="@+id/nav_inicio_cliente"
@@ -39,6 +37,11 @@
         android:id="@+id/ServiciosDisponibles_cliente"
         android:title="🔧 Servicios Disponibles"
       />
+    <!-- Cambiar Contraseña -->
+    <item
+        android:id="@+id/cambiar_contraseña"
+        android:title="🔐 Cambiar Contraseña"
+        />
     <!-- Cerrar Sesión -->
     <item
         android:id="@+id/btnCerrarSesion"

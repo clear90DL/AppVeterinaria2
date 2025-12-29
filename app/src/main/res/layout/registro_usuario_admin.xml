@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@android:color/white">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALTA DE NUEVO USUARIO"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"/>
+
+        <EditText
+            android:id="@+id/etNombreAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre Completo"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/etCorreoAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Correo Electrónico"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Asignar Nivel de Acceso (Rol):"
+            android:textSize="12sp"
+            android:layout_marginTop="8dp"/>
+        <Spinner
+            android:id="@+id/spinnerRolAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/etPassAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña Temporal"
+            android:inputType="textPassword"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/etConfirmPassAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirmar Contraseña"
+            android:inputType="textPassword"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/btnGuardarUsuarioAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CREAR CUENTA"
+            android:backgroundTint="#2196F3"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+</ScrollView>

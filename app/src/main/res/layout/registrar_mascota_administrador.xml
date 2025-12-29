@@ -9,23 +9,23 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gestión de Clientes"
+        android:text="Gestión de Mascotas"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginBottom="16dp"
         android:textColor="@android:color/black"/>
 
     <Button
-        android:id="@+id/btnAgregarUsuarioAdmin"
+        android:id="@+id/btnAbrirFormularioMascota2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="+ Agregar Nuevo Usuario"
-        android:backgroundTint="#4CAF50"
+        android:text="+ Registrar Nueva Mascota"
+        android:backgroundTint="#7B1FA2"
         android:textColor="@android:color/white"
         android:layout_marginBottom="12dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvUsuariosAdmin"
+        android:id="@+id/rvMascotasAdmin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"

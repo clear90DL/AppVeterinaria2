@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="#F8F9FA">
 
     <LinearLayout
@@ -12,24 +11,12 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Título -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="📅 Agendar Nueva Cita"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#333333"
-            android:gravity="center"
-            android:layout_marginBottom="20dp"/>
-
-        <!-- Card Principal -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            android:layout_marginBottom="16dp">
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,29 +24,40 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <!-- Seleccionar Mascota -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="🐕 Seleccionar Mascota"
-                    android:textSize="16sp"
+                    android:text="👤 Seleccionar Dueño"
                     android:textStyle="bold"
                     android:textColor="#333333"
                     android:layout_marginBottom="8dp"/>
 
                 <Spinner
-                    android:id="@+id/spinnerMascotas"
+                    android:id="@+id/spinnerDueñoCita"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@drawable/bg_spinner"
-                    android:layout_marginBottom="16dp"/>
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_spinner" />
 
-                <!-- Tipo de Servicio -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🐾 Seleccionar Mascota"
+                    android:textStyle="bold"
+                    android:textColor="#333333"
+                    android:layout_marginBottom="8dp"/>
+
+                <Spinner
+                    android:id="@+id/spinnerMascotaCita"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_spinner" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="🔧 Tipo de Servicio"
-                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="#333333"
                     android:layout_marginBottom="8dp"/>
@@ -68,15 +66,13 @@
                     android:id="@+id/spinnerServicios"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@drawable/bg_spinner"
-                    android:layout_marginBottom="16dp"/>
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_spinner" />
 
-                <!-- Fecha de la Cita -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="📅 Fecha de la Cita"
-                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="#333333"
                     android:layout_marginBottom="8dp"/>
@@ -86,19 +82,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:hint="Seleccionar fecha"
-                    android:inputType="none"
                     android:focusable="false"
                     android:clickable="true"
-                    android:drawableEnd="@drawable/ic_calendar"
+                    android:paddingStart="12dp"
                     android:background="@drawable/bg_edittext"
                     android:layout_marginBottom="16dp"/>
 
-                <!-- Hora de la Cita -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="🕒 Hora de la Cita"
-                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="#333333"
                     android:layout_marginBottom="8dp"/>
@@ -108,19 +101,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:hint="Seleccionar hora"
-                    android:inputType="none"
                     android:focusable="false"
                     android:clickable="true"
-                    android:drawableEnd="@drawable/ic_clock"
+                    android:paddingStart="12dp"
                     android:background="@drawable/bg_edittext"
                     android:layout_marginBottom="16dp"/>
 
-                <!-- Veterinario -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="👨‍⚕️ Veterinario (Opcional)"
-                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="#333333"
                     android:layout_marginBottom="8dp"/>
@@ -129,15 +119,13 @@
                     android:id="@+id/spinnerVeterinarios"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@drawable/bg_spinner"
-                    android:layout_marginBottom="16dp"/>
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_spinner" />
 
-                <!-- Notas Adicionales -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="📝 Notas Adicionales"
-                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="#333333"
                     android:layout_marginBottom="8dp"/>
@@ -146,68 +134,59 @@
                     android:id="@+id/etNotas"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:hint="Síntomas, observaciones, etc."
+                    android:hint="Síntomas u observaciones..."
                     android:inputType="textMultiLine"
                     android:gravity="top"
                     android:padding="12dp"
                     android:background="@drawable/bg_edittext"
                     android:layout_marginBottom="24dp"/>
 
-                <!-- Botones -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_marginTop="8dp">
+                    android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btnCancelarCita"
                         android:layout_width="0dp"
-                        android:layout_height="48dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Cancelar"
                         android:backgroundTint="#F44336"
                         android:textColor="#FFFFFF"
-                        android:textSize="15sp"
                         android:layout_marginEnd="8dp"/>
 
                     <Button
                         android:id="@+id/btnAgendarCita"
                         android:layout_width="0dp"
-                        android:layout_height="55dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Agendar Cita"
+                        android:text="Agendar"
                         android:backgroundTint="#4CAF50"
                         android:textColor="#FFFFFF"
-                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:layout_marginStart="8dp"/>
-
                 </LinearLayout>
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Información Importante -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="12dp"
-            app:cardElevation="2dp"
-            android:background="#E8F5E9">
+            app:cardElevation="2dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:background="#E8F5E9">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ℹ️ Información Importante"
-                    android:textSize="14sp"
                     android:textStyle="bold"
                     android:textColor="#388E3C"
                     android:layout_marginBottom="8dp"/>
@@ -215,11 +194,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="• Las citas se confirmarán por correo electrónico\n• Llegar 10 minutos antes de la cita\n• Cancelar con 24 horas de anticipación\n• Traer cartilla de vacunación"
+                    android:text="• Las citas se confirmarán automáticamente.\n• Llegar 10 minutos antes.\n• Cancelar con 24 horas de anticipación."
                     android:textSize="12sp"
                     android:textColor="#666666"
                     android:lineSpacingExtra="4dp"/>
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

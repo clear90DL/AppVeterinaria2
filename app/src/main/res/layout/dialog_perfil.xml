@@ -79,7 +79,7 @@
             android:id="@+id/btnCerrarPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Volver al inicio"
+            android:text="Ir al inicio"
             android:backgroundTint="@android:color/darker_gray"
             android:textColor="@android:color/white"/>
 

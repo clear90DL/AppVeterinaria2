@@ -35,13 +35,6 @@
         android:id="@+id/servicios_administrador"
         android:title="⚙️ Servicios"
       />
-
-    <!-- Informes y Reportes -->
-    <item
-        android:id="@+id/informes_administrador"
-        android:title="📊 Informes"
-     />
-
     <!-- Cambiar Contraseña -->
     <item
         android:id="@+id/cambiar_contraseña"

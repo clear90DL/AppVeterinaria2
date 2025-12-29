@@ -62,22 +62,67 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    // --- CÓDIGO ACTUALIZADO PARA LOGINACTIVITY ---
+
     private void checkCurrentUser() {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            // Usuario ya está logueado, redirigir según rol
-            String email = currentUser.getEmail();
-            if (email != null && email.equals("admin@gmail.com")) {
-                // Redirigir directamente a administrador
-                Intent intent = new Intent(LoginActivity.this, InicioAdministrador.class);
-                startActivity(intent);
-                finish();
-            } else {
-                // Redirigir a cliente
-                Intent intent = new Intent(LoginActivity.this, InicioCliente.class);
-                startActivity(intent);
-                finish();
-            }
+            // En lugar de decidir por email, llamamos a la función que consulta Firestore
+            determinarRolUsuario(currentUser.getEmail());
+        }
+    }
+
+    private void determinarRolUsuario(String email) {
+        // 1. Caso especial: Admin maestro (opcional mantenerlo como bypass)
+        if (email != null && email.equals("admin@gmail.com")) {
+            irAPanelAdmin();
+            return;
+        }
+
+        // 2. Buscar en Firestore el rol real del usuario
+        db.collection("usuarios")
+                .whereEqualTo("email", email)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful() && !task.getResult().isEmpty()) {
+                        // Obtenemos el primer documento encontrado
+                        DocumentSnapshot document = task.getResult().getDocuments().get(0);
+                        String rol = document.getString("rol");
+
+                        // Validar el rol independientemente del correo
+                        if ("admin".equalsIgnoreCase(rol)) {
+                            irAPanelAdmin();
+                        } else {
+                            irAPanelCliente();
+                        }
+                    } else {
+                        // Si el usuario existe en Auth pero no en Firestore, lo creamos como cliente por defecto
+                        crearUsuarioEnFirestore(email, "cliente");
+                        irAPanelCliente();
+                    }
+                });
+    }
+
+    // Métodos de ayuda para navegación limpia
+    private void irAPanelAdmin() {
+        Intent intent = new Intent(LoginActivity.this, InicioAdministrador.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void irAPanelCliente() {
+        Intent intent = new Intent(LoginActivity.this, InicioCliente.class);
+        startActivity(intent);
+        finish();
+    }
+
+    // Actualiza también el onStart para que use la nueva lógica
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            determinarRolUsuario(currentUser.getEmail());
         }
     }
 
@@ -211,45 +256,6 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_LONG).show();
     }
 
-    private void determinarRolUsuario(String email) {
-        // Para el admin especial, redirigir directamente
-        if (email.equals("admin@gmail.com")) {
-            Intent intent = new Intent(LoginActivity.this, InicioAdministrador.class);
-            startActivity(intent);
-            finish();
-            return;
-        }
-
-        // Para otros usuarios, verificar en Firestore
-        db.collection("usuarios")
-                .whereEqualTo("email", email)
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful() && !task.getResult().isEmpty()) {
-                        DocumentSnapshot document = task.getResult().getDocuments().get(0);
-                        String rol = document.getString("rol");
-
-                        if ("admin".equals(rol)) {
-                            // Redirigir a panel de administrador
-                            Intent intent = new Intent(LoginActivity.this, InicioAdministrador.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            // Redirigir a panel de cliente
-                            Intent intent = new Intent(LoginActivity.this, InicioCliente.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    } else {
-                        // Si no existe en Firestore, crear registro por defecto como cliente
-                        crearUsuarioEnFirestore(email, "cliente");
-                        Intent intent = new Intent(LoginActivity.this, InicioCliente.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
-    }
-
     private void crearUsuarioEnFirestore(String email, String rol) {
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
@@ -314,21 +320,4 @@ public class LoginActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    // En LoginActivity, si lo tienes como actividad separada:
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        // Verificar si ya hay usuario logueado
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            // Si ya está logueado, redirigir según rol
-            if (currentUser.getEmail().equals("admin@gmail.com")) {
-                startActivity(new Intent(this, InicioAdministrador.class));
-            } else {
-                startActivity(new Intent(this, InicioCliente.class));
-            }
-            finish();
-        }
     }
-}

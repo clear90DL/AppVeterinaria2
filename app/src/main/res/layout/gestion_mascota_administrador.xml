@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
     <LinearLayout
-        android:id="@+id/llRegistroMascota2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- Título -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,6 +19,30 @@
             android:gravity="center"
             android:textColor="#7B1FA2"
             android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dueño / Cliente *"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#7B1FA2"
+            android:layout_marginBottom="4dp" />
+
+        <Spinner
+            android:id="@+id/spinnerSeleccionarCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:background="@android:drawable/editbox_background"
+            android:padding="8dp"
+            android:layout_marginBottom="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginBottom="16dp"/>
 
         <!-- Nombre -->
         <TextView
@@ -68,7 +89,7 @@
             android:textColor="@android:color/black"
             android:layout_marginBottom="4dp" />
         <EditText
-            android:id="@+id/etRazaMascota2"
+            android:id="@+id/etRazaMascota3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ej: Labrador, Siames, etc."
@@ -92,7 +113,7 @@
             android:layout_marginBottom="16dp">
 
             <EditText
-                android:id="@+id/etEdadMascota2"
+                android:id="@+id/etEdadMascota3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -121,7 +142,7 @@
             android:textColor="@android:color/black"
             android:layout_marginBottom="8dp" />
         <RadioGroup
-            android:id="@+id/rgSexoMascota2"
+            android:id="@+id/rgSexoMascota3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -153,7 +174,7 @@
             android:textColor="@android:color/black"
             android:layout_marginBottom="4dp" />
         <EditText
-            android:id="@+id/etColorMascota2"
+            android:id="@+id/etColorMascota3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ej: Negro, Blanco, Marrón"
@@ -162,12 +183,12 @@
             android:textSize="16sp"
             android:layout_marginBottom="24dp" />
 
-        <!-- Botones -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="16dp">
 
             <Button
                 android:id="@+id/btnCancelarMascota2"
@@ -176,7 +197,7 @@
                 android:layout_weight="1"
                 android:text="Cancelar"
                 android:textColor="@android:color/white"
-                android:background="#757575"
+                android:backgroundTint="#757575"
                 android:layout_marginEnd="8dp" />
 
             <Button
@@ -186,7 +207,7 @@
                 android:layout_weight="1"
                 android:text="Registrar"
                 android:textColor="@android:color/white"
-                android:background="#7B1FA2" />
+                android:backgroundTint="#7B1FA2" />
         </LinearLayout>
 
     </LinearLayout>

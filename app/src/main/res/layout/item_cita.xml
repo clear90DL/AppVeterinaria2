@@ -14,7 +14,7 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/tvMascotaItem"
+            android:id="@+id/tvNombreMascotaCita"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mascota"
@@ -25,26 +25,19 @@
             android:id="@+id/tvServicioItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Servicio"
-            android:textColor="@color/design_default_color_primary" />
+            android:text="Servicio" />
 
         <TextView
-            android:id="@+id/tvVeterinarioItem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Veterinario" />
-
-        <TextView
-            android:id="@+id/tvFechaHoraItem"
+            android:id="@+id/tvFechaHora"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Fecha y Hora" />
 
         <TextView
-            android:id="@+id/tvEstadoItem"
+            android:id="@+id/tvEstadoCita"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Estado: Pendiente"
+            android:text="Estado"
             android:textStyle="italic" />
 
     </LinearLayout>

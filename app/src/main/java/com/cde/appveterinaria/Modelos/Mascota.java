@@ -13,6 +13,8 @@ public class Mascota {
     private String sexo;
     private String fotoUrl;
     private long fechaRegistro;
+    private String nombreDueño;
+
 
     // Constructor vacío necesario para Firestore
     public Mascota() {}
@@ -38,6 +40,7 @@ public class Mascota {
         map.put("edad", edad);
         map.put("idUsuario", idUsuario);
         map.put("sexo", sexo);
+        map.put("nombreDueño", nombreDueño); // <--- AGREGAR ESTO
         map.put("fotoUrl", fotoUrl != null ? fotoUrl : "");
         map.put("fechaRegistro", fechaRegistro);
         map.put("fechaRegistroFormateada",
@@ -64,6 +67,12 @@ public class Mascota {
 
     public String getIdUsuario() { return idUsuario; }
     public void setIdUsuario(String idUsuario) { this.idUsuario = idUsuario; }
+
+    public String getNombreDueño(){return nombreDueño;}
+
+    public void setNombreDueño(String duenoNombre) {
+        nombreDueño = duenoNombre;
+    }
 
     public String getSexo() { return sexo; }
     public void setSexo(String sexo) { this.sexo = sexo; }

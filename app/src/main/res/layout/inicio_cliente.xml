@@ -11,7 +11,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Header del Cliente -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,7 +25,6 @@
                 android:padding="20dp"
                 android:gravity="center">
 
-                <!-- Icono de usuario con texto -->
                 <TextView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
@@ -53,35 +51,22 @@
                     android:textSize="14sp"
                     android:textColor="#666666"
                     android:layout_marginTop="4dp"/>
-
-                <TextView
-                    android:id="@+id/tvMembership"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Miembro desde: 2024"
-                    android:textSize="12sp"
-                    android:textColor="#999999"
-                    android:layout_marginTop="8dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Tarjetas de Servicios Principales -->
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:columnCount="2"
-            android:rowCount="2"
+            android:rowCount="1"
             android:alignmentMode="alignMargins"
-            android:columnOrderPreserved="false"
-            android:padding="8dp">
+            android:columnOrderPreserved="false">
 
-            <!-- Mis Mascotas -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardMyPets"
                 android:layout_width="0dp"
                 android:layout_height="140dp"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
                 android:layout_margin="8dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
@@ -94,7 +79,6 @@
                     android:padding="16dp"
                     android:background="#E3F2FD">
 
-                    <!-- Icono como texto -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -121,13 +105,11 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Agendar Cita -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardSchedule"
                 android:layout_width="0dp"
                 android:layout_height="140dp"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
                 android:layout_margin="8dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
@@ -140,7 +122,6 @@
                     android:padding="16dp"
                     android:background="#E8F5E9">
 
-                    <!-- Icono como texto -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -165,99 +146,8 @@
                         android:layout_marginTop="4dp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <!-- Historial Médico -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardHistory"
-                android:layout_width="0dp"
-                android:layout_height="140dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:background="#FFF3E0">
-
-                    <!-- Icono como texto -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="📋"
-                        android:textSize="32sp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Historial"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="#F57C00"
-                        android:layout_marginTop="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Ver registros médicos"
-                        android:textSize="11sp"
-                        android:textColor="#666666"
-                        android:layout_marginTop="4dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Emergencias -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardEmergency"
-                android:layout_width="0dp"
-                android:layout_height="140dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:background="#FFEBEE">
-
-                    <!-- Icono como texto -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🚨"
-                        android:textSize="32sp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Emergencia"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="#D32F2F"
-                        android:layout_marginTop="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Contacto 24/7"
-                        android:textSize="11sp"
-                        android:textColor="#666666"
-                        android:layout_marginTop="4dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
         </GridLayout>
 
-        <!-- Próximas Citas -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -271,123 +161,31 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="24dp"
             app:cardCornerRadius="12dp"
-            app:cardElevation="4dp">
-
+            app:cardElevation="2dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
-
+                android:padding="16dp"
+                android:background="#FFFFFF">
                 <TextView
-                    android:id="@+id/tvNextAppointment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="No hay citas programadas"
+                    android:text="Sobre tu App Veterinaria"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="#333333"/>
-
+                    android:textColor="#1976D2"
+                    android:layout_marginBottom="12dp"/>
                 <TextView
-                    android:id="@+id/tvAppointmentDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Agenda tu primera cita con nosotros"
-                    android:textSize="14sp"
-                    android:textColor="#666666"
-                    android:layout_marginTop="4dp"/>
-
-                <Button
-                    android:id="@+id/btnScheduleNow"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:text="Agendar Ahora"
-                    android:layout_marginTop="16dp"
-                    android:backgroundTint="#2196F3"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp"
-                    android:textStyle="bold"/>
+                    android:layout_height="wrap_content"
+                    android:text="¡Bienvenido a tu Clínica Veterinaria Digital! Aquí puedes gestionar el bienestar de tus compañeros de vida de forma rápida y sencilla.\n\n• Gestiona tus mascotas y su historial.\n• Reserva citas con especialistas en tiempo real.\n• Recibe recordatorios de vacunación y chequeos.\n\nNuestro compromiso es brindarte la tranquilidad de tener la salud de tus mascotas bajo control desde la palma de tu mano."
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="#555555"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-        <!-- Acciones Rápidas -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:paddingVertical="10dp"
-            android:background="#FFFFFF"
-            android:padding="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="20dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="2dp">
-
-            <Button
-                android:id="@+id/btnProfile"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="👤 Perfil"
-                android:textSize="13sp"
-                android:textColor="#2196F3"
-                android:drawablePadding="4dp"/>
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="20dp"
-                android:background="#E0E0E0"
-                android:layout_marginHorizontal="8dp"/>
-
-            <Button
-                android:id="@+id/btnMessages"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="💬 Mensajes"
-                android:textSize="13sp"
-                android:textColor="#4CAF50"
-                android:drawablePadding="4dp"/>
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="20dp"
-                android:background="#E0E0E0"
-                android:layout_marginHorizontal="8dp"/>
-
-            <Button
-                android:id="@+id/btnNotifications"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="🔔 Alertas"
-                android:textSize="13sp"
-                android:textColor="#FF9800"
-                android:drawablePadding="4dp"/>
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="20dp"
-                android:background="#E0E0E0"
-                android:layout_marginHorizontal="8dp"/>
-
-            <Button
-                android:id="@+id/btnLogoutClient"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="🚪 Salir"
-                android:textSize="13sp"
-                android:textColor="#F44336"
-                android:drawablePadding="4dp"/>
-        </LinearLayout>
-
-    </LinearLayout>
+            </LinearLayout>
 </ScrollView>

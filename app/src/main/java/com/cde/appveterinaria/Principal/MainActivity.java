@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
@@ -163,32 +164,15 @@ public class MainActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
                         if (user != null) {
-                            Toast.makeText(MainActivity.this,
-                                    "¡Bienvenido " + user.getEmail() + "!",
-                                    Toast.LENGTH_SHORT).show();
-
                             dialog.dismiss();
-
-                            // Redirigir según el email
-                            if (email.equals("admin@gmail.com")) {
-                                // Admin especial
-                                Intent intent = new Intent(MainActivity.this,
-                                        com.cde.appveterinaria.FragmentoAdministrador.InicioAdministrador.class);
-                                startActivity(intent);
-                            } else {
-                                // Usuario normal
-                                Intent intent = new Intent(MainActivity.this,
-                                        com.cde.appveterinaria.FragmentoCliente.InicioCliente.class);
-                                startActivity(intent);
-                            }
-                            finish();
+                            // NUEVO: Consultar el rol en Firestore antes de redirigir
+                            verificarRolYRedirigir(user);
                         }
                     } else {
                         manejarErrorLogin(task.getException());
                     }
                 });
     }
-
     private void manejarErrorLogin(Exception exception) {
         String errorMessage = "Error al iniciar sesión";
 
@@ -392,19 +376,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        // Verificar si ya hay usuario logueado
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            // Si ya está logueado, redirigir según rol
-            String email = currentUser.getEmail();
-            if (email != null && email.equals("admin@gmail.com")) {
-                startActivity(new Intent(this,
-                        com.cde.appveterinaria.FragmentoAdministrador.InicioAdministrador.class));
-            } else {
-                startActivity(new Intent(this,
-                        com.cde.appveterinaria.FragmentoCliente.InicioCliente.class));
-            }
-            finish();
+            // En lugar de if(email.equals...), usamos la verificación de rol
+            verificarRolYRedirigir(currentUser);
         }
     }
     private void registrarUsuarioFirebase(String nombre, String correo, String password, Dialog dialog) {
@@ -511,6 +486,100 @@ public class MainActivity extends AppCompatActivity {
                                     Toast.LENGTH_LONG).show();
                         }
                     }
+                });
+    }
+    // 1. Mostrar el Diálogo (Reutiliza tu XML activity_registro)
+    private void mostrarDialogoRegistroDesdeAdmin() {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_registro);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        EditText txtNombre = dialog.findViewById(R.id.txtNombre);
+        EditText txtCorreo = dialog.findViewById(R.id.txtCorreoRegistro);
+        EditText txtPassword = dialog.findViewById(R.id.txtPasswordRegistro);
+        EditText txtConfirmPassword = dialog.findViewById(R.id.txtConfirmarPasswordRegistro);
+        Button btnRegistrar = dialog.findViewById(R.id.btnRegistrar);
+        TextView tvVolverLogin = dialog.findViewById(R.id.tvVolverLogin);
+
+        // Ocultamos el enlace de "Volver a Login" porque ya estamos dentro
+        tvVolverLogin.setVisibility(View.GONE);
+
+        btnRegistrar.setOnClickListener(v -> {
+            String nombre = txtNombre.getText().toString().trim();
+            String correo = txtCorreo.getText().toString().trim();
+            String password = txtPassword.getText().toString().trim();
+            String confirm = txtConfirmPassword.getText().toString().trim();
+
+            if (validarCamposRegistro(nombre, correo, password, confirm)) {
+                ejecutarRegistroAdmin(nombre, correo, password, dialog);
+            }
+        });
+
+        dialog.show();
+    }
+
+    // 2. Lógica de creación en Auth y Firestore
+    private void ejecutarRegistroAdmin(String nombre, String correo, String password, Dialog dialog) {
+        Toast.makeText(this, "Creando cuenta de cliente...", Toast.LENGTH_SHORT).show();
+
+        mAuth.createUserWithEmailAndPassword(correo, password)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser newUser = task.getResult().getUser();
+                        if (newUser != null) {
+                            // Guardar en Firestore usando tu estructura de "brayan"
+                            Map<String, Object> userMap = new HashMap<>();
+                            userMap.put("uid", newUser.getUid());
+                            userMap.put("nombre", nombre);
+                            userMap.put("email", correo);
+                            userMap.put("rol", "cliente"); // Por defecto cliente
+                            userMap.put("activo", true);
+                            userMap.put("emailVerificado", false);
+                            userMap.put("fechaRegistroFormateada", new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(new Date()));
+
+                            db.collection("usuarios").document(newUser.getUid())
+                                    .set(userMap)
+                                    .addOnSuccessListener(aVoid -> {
+                                        Toast.makeText(this, "✅ Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+                                        dialog.dismiss();
+
+                                        // RECOMENDACIÓN: Firebase acaba de cambiar la sesión al nuevo usuario.
+                                        // Cerramos sesión y mandamos al Login para que el Admin vuelva a entrar
+                                        // o el nuevo usuario inicie.
+                                        mAuth.signOut();
+                                        finish();
+                                    });
+                        }
+                    } else {
+                        Toast.makeText(this, "Error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+    private void verificarRolYRedirigir(FirebaseUser user) {
+        db.collection("usuarios").document(user.getUid()).get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        String rol = documentSnapshot.getString("rol");
+
+                        if ("admin".equals(rol)) {
+                            startActivity(new Intent(MainActivity.this,
+                                    com.cde.appveterinaria.FragmentoAdministrador.InicioAdministrador.class));
+                        } else {
+                            startActivity(new Intent(MainActivity.this,
+                                    com.cde.appveterinaria.FragmentoCliente.InicioCliente.class));
+                        }
+                        finish();
+                    } else {
+                        // Si por alguna razón no tiene documento en Firestore (caso raro)
+                        // lo mandamos a cliente o manejamos el error
+                        Toast.makeText(this, "Error: No se encontró perfil de usuario", Toast.LENGTH_SHORT).show();
+                        mAuth.signOut();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Error de red al verificar rol", Toast.LENGTH_SHORT).show();
                 });
     }
     @Override
